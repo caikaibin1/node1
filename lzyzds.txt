@@ -1,0 +1,6 @@
+清空有关服务器的内容(winSCP)
+清空钉钉消息内容
+清空微信消息内容
+清空git的姓名和邮箱(设置为空)
+git config --global user.name ''
+git config --global user.email ''
