@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试node接口</title>
+    <style>
+        div {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        点击get发起请求
+    </div>
+    <div id="post">
+        点击post发起请求
+    </div>
+</body>
+
+</html>
+<script src="./jquery/jquery.js"></script>
+<script>
+
+    $("#div").click(function () {
+        $.get("http://169.254.141.170:3000/back/api?name=小蔡", function (data, status) {
+            // alert("Data: " + data + "\nStatus: " + status);
+            console.log("data ==>",data);
+        });
+    });
+    let datas = {
+        name:'小蔡',
+        age:24,
+        sex:'男'
+    }
+    $("#post").click(function () {
+        $.post("http://169.254.141.170:3000/back/post",datas , function (data, status) {
+            // alert("Data: " + data + "\nStatus: " + status);
+            datas.age =datas.age + 1
+            console.log("age ==>",datas.age);
+            console.log("data ==>",datas);
+            console.log("data ==>",data); 
+        });
+    });
+    // let dom = document.getElementById('div')
+    // dom.onclick = () => {
+    //     console.log("点击");
+    //     // 创建异步对象
+    //     let ajax = new XMLHttpRequest()
+    //     let name = '小菜'
+    //     let headers = new Headers();
+
+    //     headers.append('Content-Type', 'application/json');
+    //     headers.append('Accept', 'application/json');
+
+    //     headers.append('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
+    //     headers.append('Access-Control-Allow-Credentials', 'true');
+
+    //     headers.append('GET', 'POST', 'OPTIONS');
+
+    //     // headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password));
+
+    //     // 设置请求的url参数,参数一是请求的类型,
+    //     // 参数二是请求的url,可以带参数,动态的传递参数starName到服务端
+    //     console.log(" ???",headers);
+    //     ajax.open('get', 'http://127.0.0.1:3000/back/api?name=123')
+    //     ajax.send()
+    //     ajax.onreadystatechange = (res) => {
+    //         console.log("res ==>", res);
+    //         if (ajax.readyState == 4 && ajax.status == 200) {
+    //             //步骤五 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
+    //             console.log(ajax.responseText);//输入相应的内容
+    //         }
+    //     }
+    // }
+
+</script>
